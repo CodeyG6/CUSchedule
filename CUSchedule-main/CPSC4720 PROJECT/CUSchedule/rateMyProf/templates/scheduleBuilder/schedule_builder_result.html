@@ -1,0 +1,24 @@
+{% extends "rateMyProf/homepage.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Recommended Schedules</h2>
+
+    {% if recommended %}
+    {% for schedule in recommended %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5>Schedule Option {{ forloop.counter }}</h5>
+            <ul>
+                {% for course in schedule %}
+                <li>{{ course.subject }} {{ course.course_number }} — {{ course.course_title }} ({{ course.start_time }} to {{ course.end_time }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="text-danger text-center">No valid schedules could be generated with your preferences.</p>
+    {% endif %}
+</div>
+{% endblock %}

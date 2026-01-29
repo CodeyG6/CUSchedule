@@ -1,0 +1,36 @@
+<!--Extend the base layout from layout.html-->
+<!--Note: Classes in HTML are for styling. 
+That's what the class names refer to-->
+{% extends "rateMyProf/layout.html" %}
+
+{% block title %} Professor Search {% endblock %}
+
+{% block content %}
+    <div class="search-tool">
+        <h1 class="title-text">Clemson University Professor Search</h1>
+        <p class="description">Please enter the name of the professor that you want to
+            search for. 
+        </p>
+        <hr class="paragraph-break">
+        <p>
+            Use the search bar to enter in the name of a professor.
+        </p>
+        <form method="POST" class="search-field">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="search-btn" type="submit">Search</button>
+        </form>
+        <style>
+            .search-btn{
+                background-color: rgb(2, 45, 128);
+                color: rgb(245, 102, 0);
+                border: none;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+            }
+        </style>
+    </div>
+{% endblock %}

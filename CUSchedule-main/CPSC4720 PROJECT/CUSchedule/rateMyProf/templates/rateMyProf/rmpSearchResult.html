@@ -1,0 +1,58 @@
+<!--Extend the base layout from layout.html-->
+{% extends "rateMyProf/layout.html" %}
+
+{% block title %} RMP Search Results {% endblock %}
+
+{% block content %}
+
+<body>
+    <h1 class="results-title">Search Results for {{name}}:</h1>
+    <p class="diff">Professor A rate: {{a_rate}}%.</p>
+    <p class="diff">Professor pass rate: {{pass_rate}}%.</p>
+    <p class="diff">Professor withdrawal rate: {{withdrawal_rate}}%.</p>
+
+    <hr class="my-4">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Subject</th>
+            <th>Course Number</th>
+            <th>Section</th>
+            <th>Course Title</th>
+            <th>Credit Hours</th>
+            <th>Instructor</th>
+            <th>Pass Rate</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for course in prof_courses %}
+        <tr>
+            <td>{{ course.subject }}</td>
+            <td>{{ course.course_number }}</td>
+            <td>{{ course.section }}</td>
+            <td>{{ course.course_title }}</td>
+            <td>{{ course.credit_hours }}</td>
+            <td>{{ course.instructor }}</td>
+            <td>{{ course.pass_rate }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'search' %}" class="return-button">Return to Professor Data Search</a>
+
+    <style>
+        .return-button{
+            background-color: rgb(2, 45, 128);
+            color: rgb(245, 102, 0);
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+</body>
+
+{% endblock %}

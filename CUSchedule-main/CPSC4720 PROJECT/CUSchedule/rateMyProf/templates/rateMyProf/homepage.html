@@ -1,0 +1,25 @@
+<!--Extend the base layout from layout.html-->
+{% extends "rateMyProf/layout.html" %}
+
+{% block title %} CUSchedule {% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Welcome to CUSchedule</h1>
+        <p class="lead">Collating Scheduling info, Professor Information, and 
+            Course Information all in one place!
+        </p>
+        <hr class="my-4">
+        <p>
+            Use the navbar to get information on Scheduling, Courses, 
+            and Professors. 
+        </p>
+        <p>
+            The Scheduling Tool provides potential schedules
+            depending on your preferences. The Course Search tool will display
+            all the courses being offered that meet the entered parameters. Finally, 
+            the Professor Data Search will provide course grade distribution information
+            in addition to listing all of the courses that the professor is currently teaching.
+        </p>
+    </div>
+{% endblock %}

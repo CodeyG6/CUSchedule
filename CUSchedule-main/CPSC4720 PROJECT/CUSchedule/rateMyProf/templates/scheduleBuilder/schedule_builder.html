@@ -1,0 +1,47 @@
+{% extends "rateMyProf/homepage.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Schedule Builder</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div id="class-inputs">
+            <div class="class-group mb-4">
+                <label>Main Class:</label>
+                <input type="text" name="input_classes" class="form-control" placeholder="e.g., ACCT2010" required>
+
+                <label>Alternative Classes (comma-separated, optional):</label>
+                <input type="text" name="alternatives" class="form-control" placeholder="e.g., ACCT2020, ACCT3030">
+
+                <label>Preferred Time Range:</label>
+                <div class="row">
+                    <div class="col">
+                        <input type="time" name="start_times" class="form-control">
+                    </div>
+                    <div class="col">
+                        <input type="time" name="end_times" class="form-control">
+                    </div>
+                </div>
+
+                <label>Minimum Pass Rate (optional):</label>
+                <input type="number" step="0.1" min="0" max="100" name="pass_rates" class="form-control" placeholder="e.g., 85">
+            </div>
+        </div>
+
+        <button type="button" onclick="addClass()" class="btn btn-secondary mb-3">Add Another Class</button>
+        <br>
+        <button type="submit" class="btn btn-primary">Generate Schedule</button>
+    </form>
+</div>
+
+<script>
+    function addClass() {
+        const container = document.getElementById('class-inputs');
+        const newGroup = container.firstElementChild.cloneNode(true);
+        // Clear the values in the cloned input fields
+        newGroup.querySelectorAll("input").forEach(input => input.value = "");
+        container.appendChild(newGroup);
+    }
+</script>
+{% endblock %}

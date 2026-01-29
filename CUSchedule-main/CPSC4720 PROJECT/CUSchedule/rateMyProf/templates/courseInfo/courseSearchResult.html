@@ -1,0 +1,43 @@
+<!--Extend the base layout from layout.html-->
+{% extends "rateMyProf/layout.html" %}
+
+{% block title %} Course Data Search {% endblock %}
+
+{% block content %}
+<div class="search-tool">
+    <h1 class="title-text">Course Search Results</h1>
+    <p class="description">Here are the results based on the course data you entered.</p>
+    <hr class="paragraph-break">
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Subject</th>
+            <th>Course Number</th>
+            <th>Section</th>
+            <th>Course Title</th>
+            <th>Credit Hours</th>
+            <th>Instructor</th>
+            <th>Pass Rate</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for course in course_list %}
+        <tr>
+            <td>{{ course.subject }}</td>
+            <td>{{ course.course_number }}</td>
+            <td>{{ course.section }}</td>
+            <td>{{ course.course_title }}</td>
+            <td>{{ course.credit_hours }}</td>
+            <td>{{ course.instructor }}</td>
+            <td>{{ course.pass_rate }}</td>
+            <td>{{ course.start_time }}</td>
+            <td>{{ course.end_time }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
